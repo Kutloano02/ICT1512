@@ -3,10 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const lastVisitedElement = document.getElementById("lastVisited");
   const lastVisit = localStorage.getItem("lastVisit");
 
-  if (lastVisit) {
-    lastVisitedElement.textContent = "Last visited: " + lastVisit;
-  } else {
-    lastVisitedElement.textContent = "This is your first visit!";
+  if (lastVisitedElement) {   // ✅ only run if element exists
+    if (lastVisit) {
+      lastVisitedElement.textContent = "Last visited: " + lastVisit;
+    } else {
+      lastVisitedElement.textContent = "This is your first visit!";
+    }
   }
 
   const now = new Date().toLocaleString();
@@ -62,7 +64,4 @@ $(document).ready(function(){
     window.location.href = "registration.html";
   });
 });
-$(".product-title").click(function(){
-  console.log("Title clicked!"); // ✅ Debug message
-  $(this).next(".product-details").slideToggle("slow");
-});
+
