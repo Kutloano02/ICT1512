@@ -62,3 +62,7 @@ $(document).ready(function(){
     window.location.href = "registration.html";
   });
 });
+$(".product-title").click(function(){
+  console.log("Title clicked!"); // ✅ Debug message
+  $(this).next(".product-details").slideToggle("slow");
+});
