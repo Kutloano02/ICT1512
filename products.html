@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Felix’s Fone Accessories - Products</title>
+    <link rel="stylesheet" href="StyleSheet/styles.css">
+
+    <!-- jQuery and jQuery UI from CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Felix’s Fone Accessories</h1>
+        <img src="images/logo.jpg" alt="Business Logo" style="width:70px;">
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="registration.html">Registration</a></li>
+            <li><a href="staff.html">Staff</a></li>
+            <li><a href="orderConfirmation.html">Order Confirmation</a></li>
+            <li><a href="receipt.html">Receipt</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Main content -->
+    <main>
+        <h2>Our Products</h2>
+
+        <!-- Products Form -->
+        <form id="productsForm">
+            <!-- Product 1 -->
+            <div class="product">
+                <figure>
+                    <img src="images/phonecase1.jpg" alt="Pink cartoon phone case" style="width:200px;">
+                    <figcaption class="product-title">Character Phone Case</figcaption>
+                </figure>
+                <div class="product-details" style="display:none;">
+                    <p>Bright and playful phone cases decorated with fun cartoon designs.</p>
+                    <p><strong>Price: R80 each</strong></p>
+                    <label><input type="checkbox" name="product1" value="Character Phone Case"> Select</label>
+                    <label>Quantity: <input type="number" name="qty1" min="1" value="1"></label>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product">
+                <figure>
+                    <img src="images/phonecase2.jpg" alt="Brown leather phone case" style="width:200px;">
+                    <figcaption class="product-title">Leather Phone Case</figcaption>
+                </figure>
+                <div class="product-details" style="display:none;">
+                    <p>Stylish and protective leather-textured phone cases.</p>
+                    <p><strong>Price: R50 each</strong></p>
+                    <label><input type="checkbox" name="product2" value="Leather Phone Case"> Select</label>
+                    <label>Quantity: <input type="number" name="qty2" min="1" value="1"></label>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product">
+                <figure>
+                    <img src="images/phonecase3.jpg" alt="Green decorative phone case" style="width:200px;">
+                    <figcaption class="product-title">Decorative Phone Case</figcaption>
+                </figure>
+                <div class="product-details" style="display:none;">
+                    <p>Elegant and stylish phone cases with braided edges.</p>
+                    <p><strong>Price: R80 each</strong></p>
+                    <label><input type="checkbox" name="product3" value="Decorative Phone Case"> Select</label>
+                    <label>Quantity: <input type="number" name="qty3" min="1" value="1"></label>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product">
+                <figure>
+                    <img src="images/protecter2.jpg" alt="Tempered glass screen protector A05" style="width:200px;">
+                    <figcaption class="product-title">Tempered Glass Screen Protector (A05/A05S)</figcaption>
+                </figure>
+                <div class="product-details" style="display:none;">
+                    <p>Durable screen protectors to keep your phone safe.</p>
+                    <p><strong>Price: R50 each</strong></p>
+                    <label><input type="checkbox" name="product4" value="Screen Protector A05"> Select</label>
+                    <label>Quantity: <input type="number" name="qty4" min="1" value="1"></label>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product">
+                <figure>
+                    <img src="images/protecter3.jpg" alt="Tempered glass screen protector A21S" style="width:200px;">
+                    <figcaption class="product-title">Tempered Glass Screen Protector (A21S)</figcaption>
+                </figure>
+                <div class="product-details" style="display:none;">
+                    <p>Strong and reliable tempered glass protectors.</p>
+                    <p><strong>Price: R65 each</strong></p>
+                    <label><input type="checkbox" name="product5" value="Screen Protector A21S"> Select</label>
+                    <label>Quantity: <input type="number" name="qty5" min="1" value="1"></label>
+                </div>
+            </div>
+
+            <!-- Product 6 (Updated to Headphones) -->
+            <div class="product">
+                <figure>
+                    <img src="images/headphones.jpg" alt="Wireless headphones" style="width:200px;">
+                    <figcaption class="product-title">Wireless Headphones</figcaption>
+                </figure>
+                <div class="product-details" style="display:none;">
+                    <p>Comfortable over‑ear wireless headphones with clear sound quality.</p>
+                    <p><strong>Price: R100 each</strong></p>
+                    <label><input type="checkbox" name="product6" value="Wireless Headphones"> Select</label>
+                    <label>Quantity: <input type="number" name="qty6" min="1" value="1"></label>
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit">Submit Order</button>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>📞 078 463 6674 | ✉️ felixfone@gmail.com | © 2026 Felix’s Fone Accessories</p>
+    </footer>
+
+    <!-- External script link -->
+    <script src="script.js"></script>
+</body>
+</html>

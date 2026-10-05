@@ -1,0 +1,176 @@
+/* General reset */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff8f0; /* light background */
+    color: #333;
+
+    /* Flexbox layout for sticky footer */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background: #ff6600; /* bright orange */
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+header img {
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+/* Navigation */
+nav {
+    background: #ff9933; /* lighter orange */
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+nav ul li {
+    margin: 0;
+}
+nav ul li a {
+    display: block;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav ul li a:hover {
+    background: #cc5500;
+}
+
+/* Main content */
+main {
+    flex: 1; /* pushes footer down */
+    padding: 20px;
+    max-width: 1100px;
+    margin: auto;
+    background: #ffffff;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+/* Products grid layout */
+form#productsForm {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Product cards */
+.product {
+    border: 2px solid #ff9933;
+    padding: 15px;
+    background: #fff0e6;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+.product:hover {
+    transform: scale(1.03);
+}
+.product figure {
+    margin: 0;
+    text-align: center;
+}
+.product img {
+    border: 2px solid #ff6600;
+    border-radius: 5px;
+}
+.product figcaption {
+    font-weight: bold;
+    margin-top: 5px;
+    color: #cc3300;
+}
+
+/* Tables (order confirmation, staff) */
+.order-table, #staffList table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+.order-table th, .order-table td,
+#staffList th, #staffList td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+.order-table th {
+    background: #ff6600;
+    color: white;
+}
+
+/* Forms */
+.registration-form, form {
+    margin-top: 15px;
+}
+label {
+    display: block;
+    margin: 8px 0;
+}
+input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
+    padding: 6px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+button {
+    background: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+}
+button:hover {
+    background: #cc3300;
+}
+
+/* Footer */
+footer {
+    background: #ff6600;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin-top: 20px;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    form#productsForm {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    }
+}
+@media (max-width: 480px) {
+    form#productsForm {
+        grid-template-columns: 1fr; /* 1 column on mobile */
+    }
+}
+.product-details {
+  background: #f9f9f9;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.product-title {
+  cursor: pointer;
+  font-weight: bold;
+  color: #0077cc;
+}
+.product-title:hover {
+  text-decoration: underline;
+}
