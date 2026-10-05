@@ -3,12 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const lastVisitedElement = document.getElementById("lastVisited");
   const lastVisit = localStorage.getItem("lastVisit");
 
-  if (lastVisitedElement) {   // ✅ only run if element exists
-    if (lastVisit) {
-      lastVisitedElement.textContent = "Last visited: " + lastVisit;
-    } else {
-      lastVisitedElement.textContent = "This is your first visit!";
-    }
+  if (lastVisit) {
+    lastVisitedElement.textContent = "Last visited: " + lastVisit;
+  } else {
+    lastVisitedElement.textContent = "This is your first visit!";
   }
 
   const now = new Date().toLocaleString();
