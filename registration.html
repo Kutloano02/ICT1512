@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Felix’s Fone Accessories - Registration</title>
+    <link rel="stylesheet" href="StyleSheet/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Felix’s Fone Accessories</h1>
+        <img src="images/logo.jpg" alt="Logo" style="width:70px;">
+    </header>
+ 
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="registration.html">Registration</a></li>
+            <li><a href="staff.html">Staff</a></li>
+            <li><a href="orderConfirmation.html">Order Confirmation</a></li>
+            <li><a href="receipt.html">Receipt</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="play.html">Play</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Client Registration Form</h2>
+        <form id="registrationForm">
+            <label>Preferred Name: <input type="text" name="preferredName" required></label><br>
+            <label>Surname: <input type="text" name="surname" required></label><br>
+            <label>ID Number: <input type="text" name="idNumber" required></label><br>
+            <label>Cell Phone: <input type="text" name="cell" required></label><br>
+            <label>Email: <input type="email" name="email" required></label><br>
+            
+            <!-- Address fields -->
+            <label>Home/Shipping Address: <input type="text" id="homeAddress" name="address" required></label><br>
+            <label>Postal Address: <input type="text" id="postalAddress" name="postalAddress" required></label><br>
+            <label><input type="checkbox" id="copyAddress"> Same as Home Address</label><br>
+            
+            <label>Name on Credit Card: <input type="text" name="cardName" required></label><br>
+            
+            <!-- Credit Card Type as radio buttons -->
+            <label>Credit Card Type:</label><br>
+            <label><input type="radio" name="cardType" value="Visa" required> Visa</label><br>
+            <label><input type="radio" name="cardType" value="MasterCard"> MasterCard</label><br>
+            <label><input type="radio" name="cardType" value="American Express"> American Express</label><br>
+            <label><input type="radio" name="cardType" value="Discover"> Discover</label><br>
+
+            <label>Credit Card Number: <input type="text" name="cardNumber" required></label><br>
+            <label>Password: <input type="password" id="password" name="password" required></label><br>
+            <label>Confirm Password: <input type="password" id="confirmPassword" name="confirmPassword" required></label><br>
+            
+            <div id="errorMessage" style="color:red;"></div>
+            <button type="submit">Register</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>📞 078 463 6674 | ✉️ felixfone@gmail.com | © 2026 Felix’s Fone Accessories</p>
+    </footer>
+
+    <script>
+   
+    document.getElementById("copyAddress").addEventListener("change", function() {
+        if (this.checked) {
+            document.getElementById("postalAddress").value = document.getElementById("homeAddress").value;
+        } else {
+            document.getElementById("postalAddress").value = "";
+        }
+    });
+
+    
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+        const idNumber = document.querySelector("[name='idNumber']").value;
+        let errors = [];
+
+       
+        if (password.length < 8) errors.push("Password must be at least 8 characters long.");
+        if (!/[A-Z]/.test(password)) errors.push("Password must contain at least one uppercase letter.");
+        if (!/[0-9]/.test(password)) errors.push("Password must contain at least one digit.");
+        if (!/[!@#$]/.test(password)) errors.push("Password must contain at least one symbol (!, @, #, $).");
+        if (password !== confirmPassword) errors.push("Passwords do not match.");
+
+       
+        if (!/^\d{13}$/.test(idNumber)) errors.push("ID number must be exactly 13 digits.");
+
+        if (errors.length > 0) {
+            document.getElementById("errorMessage").innerHTML = errors.join("<br>");
+            return;
+        }
+
+      
+        let client = {
+            preferredName: document.querySelector("[name='preferredName']").value,
+            surname: document.querySelector("[name='surname']").value,
+            idNumber: idNumber,
+            cell: document.querySelector("[name='cell']").value,
+            email: document.querySelector("[name='email']").value,
+            address: document.querySelector("[name='address']").value,
+            postalAddress: document.querySelector("[name='postalAddress']").value,
+            cardName: document.querySelector("[name='cardName']").value,
+            cardType: document.querySelector("[name='cardType']:checked").value,
+            cardNumber: document.querySelector("[name='cardNumber']").value
+        };
+
+       
+        localStorage.setItem("client", JSON.stringify(client));
+
+        
+        window.location.href = "orderConfirmation.html";
+    });
+    </script>
+</body>
+</html>

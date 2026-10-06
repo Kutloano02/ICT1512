@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Felix’s Fone Accessories - Contact</title>
+    <link rel="stylesheet" href="StyleSheet/styles.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Felix’s Fone Accessories</h1>
+        <img src="images/logo.jpg" alt="Business Logo" style="width:150px;">
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="registration.html">Registration</a></li>
+            <li><a href="staff.html">Staff</a></li>
+            <li><a href="orderConfirmation.html">Order Confirmation</a></li>
+            <li><a href="receipt.html">Receipt</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="play.html">Play</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Business Hours -->
+    <div class="desktop">
+        <table>
+            <caption>Business Hours</caption>
+            <tr><th>Day</th><th>Hours</th></tr>
+            <tr><td>Monday – Friday</td><td>9:00 AM – 6:00 PM</td></tr>
+            <tr><td>Saturday</td><td>9:00 AM – 4:00 PM</td></tr>
+            <tr><td>Sunday</td><td>Closed</td></tr>
+        </table>
+    </div>
+
+    <!-- Contact Details -->
+    <section>
+        <h2>Get in Touch</h2>
+        <div class="mobile">
+            <p>📞 Call us directly: <a href="tel:0784636674">078 463 6674</a></p>
+        </div>
+        <p>Email: <a href="mailto:felixfone@gmail.com">felixfone@gmail.com</a></p>
+        <p>Address: Pretoria, Soshanguve, Buitekant Road (opposite Nando’s restaurant)</p>
+    </section>
+
+    <!-- Contact Form -->
+    <section>
+        <h2>Send Us a Message</h2>
+        <form id="contactForm">
+            <label>Name: <input type="text" name="name" required></label><br>
+            <label>Email: <input type="email" name="email" required></label><br>
+            <label>Message:<br>
+                <textarea name="message" rows="5" cols="40" required></textarea>
+            </label><br>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="formResponse" style="color:green; margin-top:10px;"></div>
+    </section>
+
+    <!-- Map -->
+    <section>
+        <h2>Find Us</h2>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!4v1783863982584!6m8!1m7!1sPgKh0XrYN-OrK3RXY11GoA!2m2!1d-25.49558472605152!2d28.09225112534397!3f270!4f0!5f0.7820865974627469"
+                allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            <a href="tel:0784636674">📞 Call Us</a> |
+            <a href="mailto:felixfone@gmail.com">✉️ Email Us</a> |
+            © 2026 Felix’s Fone Accessories
+        </p>
+    </footer>
+
+    <script>
+        // Handle contact form submission
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const name = document.querySelector("[name='name']").value;
+            const email = document.querySelector("[name='email']").value;
+            const message = document.querySelector("[name='message']").value;
+
+            // For assessment purposes, just show confirmation
+            document.getElementById("formResponse").innerText = 
+                "Thank you, " + name + "! Your message has been received.";
+            
+            // Optionally store in localStorage
+            localStorage.setItem("contactMessage", JSON.stringify({name, email, message}));
+        });
+    </script>
+</body>
+</html>

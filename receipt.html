@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Felix’s Fone Accessories - Receipt</title>
+    <link rel="stylesheet" href="StyleSheet/styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Felix’s Fone Accessories</h1>
+        <img src="images/logo.jpg" alt="Business Logo" style="width:70px;">
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="registration.html">Registration</a></li>
+            <li><a href="staff.html">Staff</a></li>
+            <li><a href="orderConfirmation.html">Order Confirmation</a></li>
+            <li><a href="receipt.html">Receipt</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="play.html">Play</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main>
+        <h2>Receipt</h2>
+        <div id="receiptDetails"></div>
+        <h3>Products Ordered</h3>
+        <div id="productList"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>📞 078 463 6674 | ✉️ felixfone@gmail.com | © 2026 Felix’s Fone Accessories</p>
+    </footer>
+
+    <script>
+        // Retrieve client details and final total from localStorage
+        let client = JSON.parse(localStorage.getItem("client")) || {};
+        let total = localStorage.getItem("finalTotal") || "0.00";
+
+        // Builds receipt output with masked ID and card as you can see 
+        let receiptOutput = `
+            <p><strong>Preferred Name:</strong> ${client.preferredName || "N/A"}</p>
+            <p><strong>Surname:</strong> ${client.surname || "N/A"}</p>
+            <p><strong>ID Number:</strong> ${(client.idNumber || "").substring(0,4)}*********</p>
+            <p><strong>Cell Phone:</strong> ${client.cell || "N/A"}</p>
+            <p><strong>Email:</strong> ${client.email || "N/A"}</p>
+            <p><strong>Home/Shipping Address:</strong> ${client.address || "N/A"}</p>
+            <p><strong>Postal Address:</strong> ${client.postalAddress || "N/A"}</p>
+            <p><strong>Name on Credit Card:</strong> ${client.cardName || "N/A"}</p>
+            <p><strong>Credit Card Type:</strong> ${client.cardType || "N/A"}</p>
+            <p><strong>Credit Card Number:</strong> ************${(client.cardNumber || "").slice(-4)}</p>
+            <p><strong>Total Cost:</strong> R${total}</p>
+        `;
+        document.getElementById("receiptDetails").innerHTML = receiptOutput;
+
+        
+        let products = JSON.parse(localStorage.getItem("products")) || [];
+        let productOutput = "<table class='order-table'><tr><th>Product</th><th>Quantity</th></tr>";
+
+        products.forEach(p => {
+            productOutput += `<tr>
+                <td>${p.name}</td>
+                <td>${p.qty}</td>
+            </tr>`;
+        });
+        productOutput += "</table>";
+
+        document.getElementById("productList").innerHTML = products.length > 0 ? productOutput : "<p>No products selected.</p>";
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Felix’s Fone Accessories - Order Confirmation</title>
+    <link rel="stylesheet" href="StyleSheet/styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Felix’s Fone Accessories</h1>
+        <img src="images/logo.jpg" alt="Business Logo" style="width:70px;">
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="registration.html">Registration</a></li>
+            <li><a href="staff.html">Staff</a></li>
+            <li><a href="orderConfirmation.html">Order Confirmation</a></li>
+            <li><a href="receipt.html">Receipt</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="play.html">Play</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main>
+        <h2>Order Confirmation</h2>
+        <div id="customerDetails"></div>
+        <h3>Products Ordered</h3>
+        <div id="orderDetails"></div>
+        <h3>Total</h3>
+        <div id="totalCost"></div>
+
+        <!-- Buttons -->
+        <button id="confirmBtn">Confirm Order</button>
+        <button id="clearBtn">Clear Order</button>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>📞 078 463 6674 | ✉️ felixfone@gmail.com | © 2026 Felix’s Fone Accessories</p>
+    </footer>
+
+    <script>
+       
+        const prices = {
+            "Character Phone Case": 80,
+            "Leather Phone Case": 50,
+            "Decorative Phone Case": 80,
+            "Screen Protector A05": 50,
+            "Screen Protector A21S": 65,
+            "Wireless Headphones": 100
+        };
+
+        
+        let client = JSON.parse(localStorage.getItem("client")) || {};
+        document.getElementById("customerDetails").innerHTML = `
+            <p><strong>Preferred Name:</strong> ${client.preferredName || "N/A"}</p>
+            <p><strong>Surname:</strong> ${client.surname || "N/A"}</p>
+            <!-- Mask ID: show first 4 digits only -->
+            <p><strong>ID Number:</strong> ${(client.idNumber || "").substring(0,4)}*********</p>
+            <p><strong>Cell Phone:</strong> ${client.cell || "N/A"}</p>
+            <p><strong>Email:</strong> ${client.email || "N/A"}</p>
+            <p><strong>Home/Shipping Address:</strong> ${client.address || "N/A"}</p>
+            <p><strong>Postal Address:</strong> ${client.postalAddress || "N/A"}</p>
+            <p><strong>Name on Credit Card:</strong> ${client.cardName || "N/A"}</p>
+            <p><strong>Credit Card Type:</strong> ${client.cardType || "N/A"}</p>
+            <!-- Mask card: show last 4 digits only -->
+            <p><strong>Credit Card Number:</strong> ************${(client.cardNumber || "").slice(-4)}</p>
+        `;
+
+        let products = JSON.parse(localStorage.getItem("products")) || [];
+        let orderOutput = "<table class='order-table'><tr><th>Product</th><th>Price</th><th>Quantity</th><th>Total</th></tr>";
+        let grandTotal = 0;
+
+      
+        products.forEach(p => {
+            let price = prices[p.name];
+            let total = price * parseInt(p.qty);
+            grandTotal += total;
+            orderOutput += `<tr>
+                <td>${p.name}</td>
+                <td>R${price}</td>
+                <td>${p.qty}</td>
+                <td>R${total}</td>
+            </tr>`;
+        });
+        orderOutput += "</table>";
+
+        document.getElementById("orderDetails").innerHTML = products.length > 0 ? orderOutput : "<p>No products selected.</p>";
+
+       
+        let vat = grandTotal * 0.15;
+        let finalTotal = grandTotal + vat;
+        document.getElementById("totalCost").innerHTML = `
+            <p>Subtotal: R${grandTotal}</p>
+            <p>VAT (15%): R${vat.toFixed(2)}</p>
+            <p><strong>Final Total: R${finalTotal.toFixed(2)}</strong></p>
+        `;
+
+        
+        document.getElementById("confirmBtn").addEventListener("click", function() {
+            localStorage.setItem("finalTotal", finalTotal.toFixed(2));
+            window.location.href = "receipt.html";
+        });
+
+       
+        document.getElementById("clearBtn").addEventListener("click", function() {
+            localStorage.clear();
+            window.location.href = "orderConfirmation.html";
+        });
+    </script>
+</body>
+</html>

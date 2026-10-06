@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Felix’s Fone Accessories - Play</title>
+    <link rel="stylesheet" href="StyleSheet/styles.css">
+    <style>
+        /* Puzzle styling */
+        #puzzle { 
+            width: 400px;   /* match image width */
+            height: 500px; /* match image height */
+            margin: 20px auto; 
+        }
+        .piece { 
+            float: left; 
+            border: 1px solid #ccc; 
+            cursor: grab; /* makes it feel draggable */
+        }
+        .piece:hover {
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Felix’s Fone Accessories</h1>
+        <img src="images/logo.jpg" alt="Business Logo" style="width:70px;">
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="registration.html">Registration</a></li>
+            <li><a href="staff.html">Staff</a></li>
+            <li><a href="orderConfirmation.html">Order Confirmation</a></li>
+            <li><a href="receipt.html">Receipt</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="play.html">Play</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main>
+        <h2>Fun Puzzle Game</h2>
+        <p>Rearrange the pieces to complete the cellphone image!</p>
+        <div id="puzzle"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>📞 078 463 6674 | ✉️ felixfone@gmail.com | © 2026 Felix’s Fone Accessories</p>
+    </footer>
+
+    <script>
+        const puzzle = document.getElementById("puzzle");
+        const rows = 5, cols = 6; // divides 775 × 1323 evenly
+        const pieceWidth = puzzle.offsetWidth / cols;   // 31px
+        const pieceHeight = puzzle.offsetHeight / rows; // 441px
+
+        const pieces = [];
+        for (let i = 0; i < rows * cols; i++) {
+            pieces.push(`<div class="piece" style="
+                width:${pieceWidth}px; 
+                height:${pieceHeight}px; 
+                background-image:url('images/vendor.jpg');
+                background-size:${puzzle.offsetWidth}px ${puzzle.offsetHeight}px;
+                background-position:${-(i % cols) * pieceWidth}px ${-Math.floor(i / cols) * pieceHeight}px;
+            " draggable="true"></div>`);
+        }
+
+        // Shuffle pieces
+        pieces.sort(() => Math.random() - 0.5);
+
+        // Display puzzle
+        puzzle.innerHTML = pieces.join("");
+
+        // Drag-and-drop functionality
+        let dragged;
+        puzzle.addEventListener("dragstart", e => {
+            dragged = e.target;
+        });
+        puzzle.addEventListener("dragover", e => {
+            e.preventDefault();
+        });
+        puzzle.addEventListener("drop", e => {
+            if (e.target.classList.contains("piece")) {
+                let temp = e.target.style.backgroundPosition;
+                e.target.style.backgroundPosition = dragged.style.backgroundPosition;
+                dragged.style.backgroundPosition = temp;
+            }
+        });
+    </script>
+</body>
+</html>
