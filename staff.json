@@ -1,0 +1,12 @@
+[
+  { "staffNumber": "001", "firstName": "Felix", "lastName": "Dollars", "jobDescription": "Boss", "workPhone": "0784636674", "workEmail": "felixfone@gmail.com" },
+  { "staffNumber": "002", "firstName": "Thabo", "lastName": "Mokoena", "jobDescription": "Sales Assistant", "workPhone": "0721234568", "workEmail": "thabo.mokoena@felixfone.com" },
+  { "staffNumber": "003", "firstName": "Lerato", "lastName": "Dlamini", "jobDescription": "Repair Technician", "workPhone": "0831234569", "workEmail": "lerato.dlamini@felixfone.com" },
+  { "staffNumber": "004", "firstName": "Sipho", "lastName": "Khumalo", "jobDescription": "Customer Support", "workPhone": "0761234570", "workEmail": "sipho.khumalo@felixfone.com" },
+  { "staffNumber": "005", "firstName": "Nomsa", "lastName": "Ndlovu", "jobDescription": "Inventory Clerk", "workPhone": "0821234571", "workEmail": "nomsa.ndlovu@felixfone.com" },
+  { "staffNumber": "006", "firstName": "Kagiso", "lastName": "Molefe", "jobDescription": "Sales Assistant", "workPhone": "0741234572", "workEmail": "kagiso.molefe@felixfone.com" },
+  { "staffNumber": "007", "firstName": "Zanele", "lastName": "Mthembu", "jobDescription": "Repair Technician", "workPhone": "0811234573", "workEmail": "zanele.mthembu@felixfone.com" },
+  { "staffNumber": "008", "firstName": "Themba", "lastName": "Nkosi", "jobDescription": "Customer Support", "workPhone": "0751234574", "workEmail": "themba.nkosi@felixfone.com" },
+  { "staffNumber": "009", "firstName": "Ayanda", "lastName": "Mahlangu", "jobDescription": "Inventory Clerk", "workPhone": "0841234575", "workEmail": "ayanda.mahlangu@felixfone.com" },
+  { "staffNumber": "010", "firstName": "Sibusiso", "lastName": "Radebe", "jobDescription": "Sales Assistant", "workPhone": "0791234576", "workEmail": "sibusiso.radebe@felixfone.com" }
+]

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Felix’s Fone Accessories - Staff</title>
+    <link rel="stylesheet" href="StyleSheet/styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Felix’s Fone Accessories</h1>
+        <img src="images/logo.jpg" alt="Business Logo" style="width:70px;">
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="registration.html">Registration</a></li>
+            <li><a href="staff.html">Staff</a></li>
+            <li><a href="orderConfirmation.html">Order Confirmation</a></li>
+            <li><a href="receipt.html">Receipt</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="play.html">Play</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main>
+        <h2>Our Staff</h2>
+        <!-- Staff list will be injected here -->
+        <div id="staffList"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            📞 078 463 6674 | ✉️ felixfone@gmail.com | © 2026 Felix’s Fone Accessories
+        </p>
+    </footer>
+
+    <!-- Script to fetch staff.json and build table -->
+    <script>
+      // Fetch staff data from staff.json
+      fetch("staff.json")
+        .then(response => response.json())
+        .then(data => {
+          // Build staff table with caption for accessibility
+          let output = "<table><caption>Felix’s Fone Accessories Staff Directory</caption><tr><th>Number</th><th>Name</th><th>Job</th><th>Phone</th><th>Email</th></tr>";
+          
+          // Loop through staff records
+          data.forEach(staff => {
+            output += `<tr>
+              <td>${staff.staffNumber}</td>
+              <td>${staff.firstName} ${staff.lastName}</td>
+              <td>${staff.jobDescription}</td>
+              <td>${staff.workPhone}</td>
+              <td>${staff.workEmail}</td>
+            </tr>`;
+          });
+
+          output += "</table>";
+          document.getElementById("staffList").innerHTML = output;
+        })
+        .catch(error => console.error("Error loading staff data:", error));
+    </script>
+</body>
+</html>
